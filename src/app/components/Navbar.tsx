@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <div>
       <Link href={"/"}>Home</Link>
-      <Link href={"/about"}>About</Link>
+      <Link href={"/views/about"}>About</Link>
     </div>
   );
 }
