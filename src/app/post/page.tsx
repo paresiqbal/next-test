@@ -15,6 +15,7 @@ const getDogData = async () => {
     next: {
       revalidate: 5,
     },
+    cache: "no-store",
   });
   return res.json();
 };
