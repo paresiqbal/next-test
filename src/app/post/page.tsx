@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const getPostData = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   return res.json();
@@ -8,8 +10,17 @@ const getUserData = async () => {
   return res.json();
 };
 
+const getDogData = async () => {
+  const res = await fetch("https://dog.ceo/api/breeds/image/random");
+  return res.json();
+};
+
 export default async function Post() {
-  const [post, users] = await Promise.all([getPostData(), getUserData()]);
+  const [post, users, dogs] = await Promise.all([
+    getPostData(),
+    getUserData(),
+    getDogData(),
+  ]);
 
   return (
     <div>
@@ -22,6 +33,7 @@ export default async function Post() {
           return <p>{user.name}</p>;
         })}
       </div>
+      <Image src={dogs.message} alt="Dogs" width={80} height={80} />
     </div>
   );
 }
